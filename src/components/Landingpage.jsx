@@ -8,17 +8,20 @@ function Landingpage() {
       <div className='textstructure  px-20 py-4 mt-20'>
         {["We Create", "Eye-Opening", "Presentations"].map((text, index) => {
           return (
-            <div className='masker'>
-              <h1 className='text-[7vw] mt-17 leading-[1vw] uppercase font-["Founders Grotesk"] text-white -tracking-[8px] font-semibold'>{text}</h1>
+            <div key={index} className='masker'>
+              <div className='w-fit flex items-end'>
+              {index === 1 && <div className='bg-red-300 w-[8vw] h-[4.8vw] mr-[1vw] mb-[1vw] relative top-[.3vw] rounded-sm'></div>}
+                <h1 className='text-[7vw] leading-[7vw] uppercase font-["Founders_Grotesk"] text-white font-semibold'>{text}</h1>
+              </div>
             </div>
           )
         })}
       </div>
 
-      <div className='border-t-2 flex justify-between px-20 py-5 border-zinc-700 mt-32'>
+      <div className='border-t-2 flex justify-between px-20 py-5 border-zinc-700 mt-8'>
         {["For public and private companies", "From the first pitch to IPO"].map((text, index) => {
           return (
-            <p className='text-white'>{text}</p>
+            <p key={index} className='text-white'>{text}</p>
           )
         })}
 
