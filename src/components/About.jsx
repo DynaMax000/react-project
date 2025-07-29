@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-    <div className='w-full p-20 bg-[#CDEA68] rounded-tl-2xl rounded-tr-2xl text-black font-[Neue_Montreal]'>
+    <div className='w-full p-20 bg-[#CDEA68] rounded-tl-2xl rounded-tr-2xl text-black font-[Neue_Montreal] relative z-20 -mt-20'>
       <h1 className='text-[4vw] leading-[3.3vw] tracking-tight'>Ochi is a strategic presentation agency for forward-thinking businesses that need to raise funds, sell prod­ucts, ex­plain com­plex ideas, and hire great peo­ple.
       </h1>
       <div className='border-t-[1px] border-[#8e9a63] w-full mt-20 flex gap-20'>

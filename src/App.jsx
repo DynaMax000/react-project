@@ -8,10 +8,12 @@ import Eyes from './components/Eyes.jsx'
 import Featured from './components/Featured.jsx'
 import Cards from './components/Cards.jsx'
 import Footer from './components/Footer.jsx'
+import LocomotiveScroll from 'locomotive-scroll'
 
 function App() {
+  const locomotiveScroll = new LocomotiveScroll();
   return (
-    <div className="w-full min-h-screen bg-zinc-800 tex-white">
+    <div className="w-full min-h-screen bg-zinc-800 text-white">
       <Navbar />
       <Landingpage />
       <Marquee />
