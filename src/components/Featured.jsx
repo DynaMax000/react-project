@@ -1,10 +1,23 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import React from 'react'
 import { useState } from 'react';
-import { Power4 } from 'gsap';
 
 function Featured() {
-  const [isHovering, setHovering] = useState(false);
+  const cards = [useAnimation(), useAnimation()];
+  
+  const handleHover = (index) => {
+    cards[index].start({
+      y: "0"
+    })
+  }
+
+  const handleHoverEnd = (index) => {
+    cards[index].start({
+      y: "100%"
+    })
+  }
+
+
   return (
     <div className='w-full py-20'>
       <div className='w-full px-20 border-b-2 pb-10 border-zinc-600'>
@@ -14,13 +27,17 @@ function Featured() {
       <div className='cards px-20 mt-20 flex gap-5 w-full'>
         <div className='w-1/2'>
           <h1 className='text-white text-[3vh] tracking-tight font-["Neue_Montreal"] mb-7'>• Salience Labs</h1>
-          <div onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)} className='cardcontainer relative h-[75vh]'>
+          <motion.div
+            onHoverStart={() => handleHover(0)}
+            onHoverEnd={() => handleHoverEnd(0)}
+            className='cardcontainer relative h-[75vh]'>
             <h1 className='absolute flex left-full -translate-x-1/2 top-1/2 -translate-y-1/2 text-[#CDEA68] font-["Neue_Montreal"]  text-[20vh] z-[9] tracking-tighter overflow-hidden'>
               {"Branding".split("").map((char, index) => {
                 return (
                   <motion.span
+                    key={index}
                     initial={{ y: "100%" }}
-                    animate={isHovering ? ({ y: "0" }) : ({ y: "100%" })}
+                    animate={cards[0]}
                     transition={{ ease: [0.22, 1, 0.36, 1], delay: index * .06 }}
                     className='inline-block'>
                     {char}
@@ -36,18 +53,22 @@ function Featured() {
 
               <button type='submit' className='bg-white px-3 py-1 border-2 border-black uppercase mt-3 rounded-full'>pitch deck</button>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className='w-1/2'>
           <h1 className='text-white text-[3vh] tracking-tight font-["Neue_Montreal"] mb-7'>• Cardboard Spaceships</h1>
 
-          <div className='cardcontainer relative h-[75vh]'>
-            <h1 className='absolute flex right-full translate-x-1/2 top-1/2 -translate-y-1/2 text-[#CDEA68] font-["Neue_Montreal"] text-[20vh] z-[9] tracking tighter overflow-hidden'>
+          <motion.div
+            className='cardcontainer relative h-[75vh]'
+            onHoverStart={() => handleHover(1)}
+            onHoverEnd={() => handleHoverEnd(1)}>
+            <h1 className='absolute flex right-full translate-x-1/2 top-1/2 -translate-y-1/2 text-[#CDEA68] font-["Neue_Montreal"] text-[20vh] z-[9] tracking-tighter overflow-hidden'>
               {"Double".split("").map((char, index) => {
                 return (
                   <motion.span
+                    key={index}
                     initial={{ y: "100%" }}
-                    animate={isHovering ? ({ y: "0" }) : ({ y: "100%" })}
+                    animate={cards[1]}
                     transition={{ ease: [0.22, 1, 0.36, 1], delay: index * .06 }}
                     className='inline-block'>
                     {char}
@@ -55,10 +76,10 @@ function Featured() {
                 );
               })}
             </h1>
-            <div className='rounded-xl overflow-hidden  w-full h-full'>
+            <div className='rounded-xl overflow-hidden w-full h-full'>
               <img className='w-full h-full bg-cover' src='https://ochi.design/wp-content/uploads/2024/08/CS_Website_1-1326x1101.png'></img>
             </div>
-          </div>
+          </motion.div>
           <div className='flex gap-3 text-black'>
             <button type='submit' className='bg-white px-3 py-1 border-2 border-black uppercase mt-3 rounded-full'>branded template</button>
             <button type='submit' className='bg-white px-3 py-1 border-2 border-black uppercase mt-3 rounded-full'>sales deck</button>
